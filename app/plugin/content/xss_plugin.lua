@@ -35,11 +35,21 @@ function xss_plugin.init(self)
     self.sink = sink
 end
 
+function xss_plugin.term(self, stream)
+    for k,v in pairs(stream.metadata) do
+        self.sink[k]=v
+    end
+end
 
 function xss_plugin.action(self, stream) 
     for k,v in pairs(stream.metadata) do
         print(k,v)
     end
+    --stream.metadata.data = stream.metadata.data.."append" 
+    local tmp_data = stream.metadata.data
+    --modified metadata.data
+    stream.metadata.data = "append "..tmp_data 
+    return self:term(stream)
 end
 
 function xss_plugin.match(self, param)
