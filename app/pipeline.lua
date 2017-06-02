@@ -1,10 +1,18 @@
 local pipeline = {}
 
-function pipeline.add(self, elements)
-    self.element_list = elements
-    for k,v in pairs(self.element_list) do
+function pipeline.output(self, list, flg)
+    if flg == 0 then
+        return 
+    end
+
+    for k,v in pairs(list) do
         print(k,v)
     end
+end
+
+function pipeline.add(self, elements)
+    self.element_list = elements
+    self:output(elements, 0)
 end
 
 function pipeline.run(self)
@@ -17,19 +25,12 @@ function pipeline.run(self)
         v:init()
         v:push(src)
         src, sink = v:match('params')
-        print("[s]====================")
----[[
         if type(sink) == "table" then
-            for key, value in pairs(sink) do
-                print(key, value)
-            end
+            self:output(sink, 0)
         end
---]]
-        print("[e]====================")
         src = sink
     end
 end
 
---return pipeline:start("params")
 return pipeline
 
