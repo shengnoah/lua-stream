@@ -1,3 +1,5 @@
+local pipeline = require "pipeline"
+
 local xss_plugin = require"plugin.content.xss_plugin"
 local sql_plugin = require"plugin.content.sql_plugin"
 local cc_plugin = require"plugin.content.cc_plugin"
@@ -8,5 +10,5 @@ local plugin_list= {
     --cc=cc_plugin
 }
 
+pipeline:start(plugin_list)
 
-return plugin_list
