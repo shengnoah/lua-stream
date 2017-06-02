@@ -1,8 +1,6 @@
---local buffer = require "buffer"
 local xss_plugin = {}
 
 local src = {
-    --args = buffer.get("rule_args")
    args="xss args"
 
 }
@@ -26,7 +24,6 @@ end
 function xss_plugin.push(self, stream) 
     for k,v in pairs(stream.metadata) do
         self.source[k]=v
-        --print(k,v)
     end
 end
 
@@ -45,10 +42,9 @@ function xss_plugin.action(self, stream)
     for k,v in pairs(stream.metadata) do
         print(k,v)
     end
-    --stream.metadata.data = stream.metadata.data.."append" 
     local tmp_data = stream.metadata.data
-    --modified metadata.data
     stream.metadata.data = "append "..tmp_data 
+
     return self:term(stream)
 end
 
