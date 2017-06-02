@@ -10,5 +10,7 @@ local plugin_list= {
     --cc=cc_plugin
 }
 
-pipeline:start(plugin_list)
+--pipeline:start(plugin_list)
+pipeline:add(plugin_list)
+pipeline:run()
 

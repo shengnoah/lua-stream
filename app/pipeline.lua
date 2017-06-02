@@ -1,14 +1,19 @@
-local plugin_list = require "plugin_config"
-
 local pipeline = {}
 
-function pipeline:start(params)
+function pipeline.add(self, elements)
+    self.element_list = elements
+    for k,v in pairs(self.element_list) do
+        print(k,v)
+    end
+end
+
+function pipeline.run(self)
     local src = {
         metadata= { 
             data="http data"
         }
     }
-    for k,v in pairs(plugin_list) do
+    for k,v in pairs(self.element_list) do
         v:init()
         v:push(src)
         src, sink = v:match('params')
@@ -25,4 +30,6 @@ function pipeline:start(params)
     end
 end
 
-return pipeline:start("params")
+--return pipeline:start("params")
+return pipeline
+
