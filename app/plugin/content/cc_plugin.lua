@@ -1,29 +1,52 @@
-local cc_rules = require"rules.sql_rules"
+--local cc_rules = require"rules.sql_rules"
 
 local cc_plugin = {}
 
-function cc_plugin.push(self, param) 
-    print("cc_plugin:push "..type(param))
+local src = {
+   args="cc args"
+}
+
+local sink = {
+    name = "cc_plugin",
+    ver = "0.1"
+}
+
+function cc_plugin.output(self, list, flg)
+    if flg == 0 then
+        return
+    end
+
+    for k,v in pairs(list) do
+        print(k,v)
+    end
+end
+
+
+function cc_plugin.push(self, stream) 
+    for k,v in pairs(stream.metadata) do
+        self.source[k]=v
+    end 
 end
 
 function cc_plugin.init(self)
-    self.rules=cc_rules
+    self.source = src
+    self.sink = sink
 end
 
-function cc_plugin.action(self, param) 
-    print("cc_plugin:action")
+function cc_plugin.action(self, stream) 
+    for k,v in pairs(stream.metadata) do
+        print(k,v)
+    end
 end
 
 function cc_plugin.match(self, param)
-    self:init()
-    print("cc_plugin:match")
-    for k, v in pairs(self.rules) do
-        for _,value in pairs(v) do
-            --print(value)
-            --if regular ~= "" and ngx.re.find(params, regular, "jo") then
-            --end 
-        end 
-    end 
+    self.sink['found_flg']=false
+    for kn,kv in pairs(self.source) do
+         self.sink[kn] = kv
+    end
+    self.sink['metadata'] = { data=self.source['data'].." cc_plugin add " }
+    self:action(self.sink)
+    return self.source, self.sink
 end
 
 return cc_plugin

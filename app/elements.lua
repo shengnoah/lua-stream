@@ -7,7 +7,7 @@ local cc_plugin = require"plugin.content.cc_plugin"
 local plugin_list= { 
     xss=xss_plugin,
     sql=sql_plugin,
-    --cc=cc_plugin
+    cc=cc_plugin
 }
 
 pipeline:add(plugin_list)
