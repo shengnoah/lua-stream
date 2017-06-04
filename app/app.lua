@@ -49,6 +49,12 @@ app:get("/hilua", function(request,id)
      
 end)
 
+
+app:get("/blockip", function(request,id)
+    --ngx.say(request.params['cmd_url'])
+    require "elements"
+end)
+
 app:get("/json", function(request,id)
     local json = require "cjson"
     local util = require "cjson.util"
