@@ -35,6 +35,8 @@ function httpsrc_plugin.action(self, stream)
     for k,v in pairs(stream.request) do
        print(k,v)
     end
+    local params = require "nginx"
+    self.sink['request']['url'] = params['cmd_url']
     self.sink['request']['ip'] = '127.0.0.1'
 --    self.sink['metadata'] = { data=self.source['data'].." httpsrc add ",uri="http://candylab.net" }
 end
