@@ -27,22 +27,19 @@ function sql_plugin.push(self, stream)
 end
 
 function sql_plugin.init(self)
-    self.rules=sql_rules
     self.source = src 
     self.sink = sink
 end
 
 function sql_plugin.action(self, stream) 
-    for k,v in pairs(stream.metadata) do
+    for k,v in pairs(stream.request) do
         print(k,v)
     end 
 end
 
 function sql_plugin.match(self, param)
-    for k, v in pairs(self.rules) do
-        for _,value in pairs(v) do
-            --print(value)
-        end 
+    for kn, vn in pairs(self.source) do
+        self.sink[kn] = vn
     end
     self.sink['metadata'] = { data=self.source['data'].." sql_plugin add" }
     self:action(self.sink)
