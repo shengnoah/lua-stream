@@ -18,13 +18,16 @@ end
 function pipeline.run(self)
     local src = {
         metadata= { 
-            data="http data"
+            data="http data",
+            request = {
+                uri="http://www.candylab.net"
+            }
         }
     }
     for k,v in pairs(self.element_list) do
         v:init()
         v:push(src)
-        src, sink = v:match('params')
+        local src, sink = v:match('params')
         if type(sink) == "table" then
             self:output(sink, 0)
         end
