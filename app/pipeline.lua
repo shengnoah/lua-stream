@@ -1,6 +1,8 @@
-local pipeline = {}
+local Pipeline = {}
+local Pobj = {}
 
-function pipeline.output(self, list, flg)
+
+function Pipeline.output(self, list, flg)
     if flg == 0 then
         return 
     end
@@ -10,12 +12,13 @@ function pipeline.output(self, list, flg)
     end
 end
 
-function pipeline.add(self, elements)
+function Pipeline.new(self, elements)
     self.element_list = elements
     self:output(elements, 0)
+    return PObj
 end
 
-function pipeline.run(self)
+function Pipeline.run(self)
     local src = {
         metadata= { 
             data="http data",
@@ -35,5 +38,5 @@ function pipeline.run(self)
     end
 end
 
-return pipeline
+return Pipeline
 
