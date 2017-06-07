@@ -2,7 +2,6 @@ local xss_plugin = {}
 
 local src = {
    args="xss args"
-
 }
 
 local sink = {
@@ -11,22 +10,14 @@ local sink = {
 }
 
 function xss_plugin.output(self, list, flg)
-    if flg == 0 then
-        return 
-    end 
-
-    for k,v in pairs(list) do
-        print(k,v)
-    end 
+    if flg == 0 then return end 
+    for k,v in pairs(list) do print(k,v) end 
 end
 
 
 function xss_plugin.push(self, stream) 
     for k,v in pairs(stream.metadata) do
         self.source[k]=v
-        --print("%%%%%%%%%%%%%%%%%%%%")
-        --print(k,v)
-        --print("%%%%%%%%%%%%%%%%%%%%")
     end
 end
 
@@ -45,9 +36,6 @@ function xss_plugin.action(self, stream)
     for k,v in pairs(stream.request) do
        print(k,v)
     end
-    local tmp_data = stream.metadata.data
-    stream.metadata.data = "append \n"..tmp_data 
-
     --return self:setcaps(stream)
     return 
 end

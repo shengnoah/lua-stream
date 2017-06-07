@@ -37,13 +37,13 @@ function cc_plugin.action(self, stream)
     for k,v in pairs(stream.request) do
         print(k,v)
     end
-    self.sink['request']['ip'] = '127.0.0.1'
+    --self.sink['request']['ip'] = '127.0.0.1'
 end
 
 function cc_plugin.match(self, param)
     self.sink['found_flg']=false
-    for kn,kv in pairs(self.source) do
-         self.sink[kn] = kv
+    for k,v in pairs(self.source) do
+         self.sink[k] = v
     end
     self.sink['metadata'] = { data=self.source['data'].." cc_plugin add " }
     self:action(self.sink)
