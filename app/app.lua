@@ -102,7 +102,7 @@ app:get("/getrule", function(request,id)
 end)
 
 app:get("/data", function(request,id)
-    local json_text = bjson.loadf("./app/data/rules/testcase", env)
+    local json_text = bjson.loadf("./app/data/rules/whiteip.rule", env)
     local t = bjson.decode(json_text)
 
     buffer.sett("r1", t)

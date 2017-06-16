@@ -1,5 +1,3 @@
---local cc_rules = require"rules.sql_rules"
-
 local blockip_plugin = {}
 
 local src = {
@@ -35,12 +33,21 @@ function blockip_plugin.init(self)
 end
 
 function blockip_plugin.action(self, stream) 
-    for k,v in pairs(self.ip_list) do
-        if v == stream.request.ip then
-            ngx.say("block")
+    local buffer = require "buffer"
+    local blockip_list = buffer.gett("blockip_list")
+
+    for k,v in pairs(blockip_list) do
+        if v['RuleItem'] == stream.request.ip then
+            ngx.say('blockip')
         end
     end
-    --self.sink['request']['ip'] = '127.0.0.1'
+
+    for k,v in pairs(self.ip_list) do
+        if v == stream.request.ip then
+            --ngx.say('blockip')
+            --ngx.exit(404)
+        end
+    end
 end
 
 function blockip_plugin.match(self, param)
@@ -48,7 +55,6 @@ function blockip_plugin.match(self, param)
     for k,v in pairs(self.source) do
          self.sink[k] = v
     end
-    self.sink['metadata'] = { data=self.source['data'].." cc_plugin add " }
     self:action(self.sink)
     return self.source, self.sink
 end

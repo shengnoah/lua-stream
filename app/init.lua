@@ -17,3 +17,11 @@ buffer.sett("init_args", t)
 --meta = buffer.gett("args")
 
 
+local blockip = bjson.loadf("./app/data/rules/blockip.rule", env)
+local ip_list = bjson.decode(blockip)
+
+
+buffer.sett("blockip_list", ip_list)
+
+
+
