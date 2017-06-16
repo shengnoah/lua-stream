@@ -166,6 +166,4 @@ app:get("/greatball", function(request,id)
     ngx.say(request.params.cmd_url)
 end)
 
-
-
-return app.run()
+return app
