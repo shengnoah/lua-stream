@@ -1,2 +1,3 @@
 # Wario
-一个基于Pipeline模式的Openresty应用系统
+一个基于Pipeline模式的OpenResty应用系统
+Wario提供不同类型的OpenResty的LUA代码插件，可以在不是很了解OpenResty编写LUA代码的情况下，用现成的插件串接出你想要的功能。
