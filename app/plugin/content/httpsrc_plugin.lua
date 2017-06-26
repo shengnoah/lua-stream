@@ -39,8 +39,8 @@ function httpsrc_plugin.action(self, stream)
     local params = require "nginx"
     self.sink['request']['url'] = params['cmd_url']
     self.sink['request']['ip'] = params['ip'] 
-    ngx.say(params['ip'])
---    self.sink['metadata'] = { data=self.source['data'].." httpsrc add ",uri="http://candylab.net" }
+    --ngx.say(params['ip'])
+    --self.sink['metadata'] = { data=self.source['data'].." httpsrc add ",uri="http://candylab.net" }
 end
 
 function  httpsrc_plugin.match(self, param)
