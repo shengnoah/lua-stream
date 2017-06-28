@@ -28,16 +28,29 @@ function html_plugin.init(self)
 end
 
 function html_plugin.action(self, stream)
-    local http = require "resty.http"
-    local httpc = http.new()
-    local res, err = httpc:request_uri("http://lua.ren")
-    if res.status == ngx.HTTP_OK then
-        ngx.header['Content-Type'] = 'text/html; charset=UTF-8'
-        ngx.say(res.body)
-    else
-        ngx.exit(res.status)
+
+    function requestDeal(url)
+        local http = require "resty.http"
+        local httpc = http.new()
+        local res, err = httpc:request_uri(url)
+        if res then
+            if res.status == ngx.HTTP_OK then
+                ngx.header['Content-Type'] = 'text/html; charset=UTF-8'
+                ngx.say(res.body)
+            else
+                ngx.exit(res.status)
+            end
+        end
     end
-   -- ngx.say(stream.request.url)
+
+    local bjson = require "utils.bjson"
+    local json_text = bjson.loadf("./app/data/rules/urllist.rule", env)
+    local t = bjson.decode(json_text)
+    
+    for k,v in pairs(t) do
+        requestDeal(v.url)
+    end
+    --ngx.say(stream.request.url)
 end
 
 function html_plugin.match(self, param)
