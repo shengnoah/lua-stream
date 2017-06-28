@@ -29,11 +29,18 @@ end
 
 function html_plugin.action(self, stream)
 
-    function requestDeal(url)
+    function requestDeal(req)
         local http = require "resty.http"
         local httpc = http.new()
-        local res, err = httpc:request_uri(url)
+        local headers = {}
+
+        local res,err = httpc:request_uri(req.uri,{
+                            method="GET",
+                            body = req.body,
+                            headers=req.headers
+                        })
         if res then
+
             if res.status == ngx.HTTP_OK then
                 ngx.header['Content-Type'] = 'text/html; charset=UTF-8'
                 ngx.say(res.body)
@@ -48,9 +55,12 @@ function html_plugin.action(self, stream)
     local t = bjson.decode(json_text)
     
     for k,v in pairs(t) do
-        requestDeal(v.url)
+        requestDeal { 
+            uri=v.url, 
+            body=v.body, 
+            headers=v.headers
+        }
     end
-    --ngx.say(stream.request.url)
 end
 
 function html_plugin.match(self, param)
