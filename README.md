@@ -53,7 +53,7 @@ OUT:
 
 描述：使用PCRE正则的过滤插件
 
-IN:
+IN: keyword.rule
 
 OUT:
 
@@ -64,7 +64,7 @@ OUT:
 
 描述：用户请求重定向插件 
 
-IN:
+IN: keyword.rule
 
 OUT:
 
@@ -74,13 +74,6 @@ OUT:
 
 描述：路由插件 
 
-IN:
+IN: counter.rule
 
 OUT:
-
-
-
-
-
-
-
