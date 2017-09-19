@@ -1,1 +1,4 @@
-[{"Id":1,"url":"http://lua.ren", "params":"UserName=tester", "headers":{ "User-Agent":"TestAgent"} , "body":"testbody"}]
+[
+{"Id":1,"key":"k1" ,"url":"http://www.mumujita.com/puku/pic/2017-06-07/8195.html", "params":"UserName=tester", "headers":{ "User-Agent":"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"} , "body":""},
+{"Id":2,"key":"k2" ,"url":"http://www.mumujita.com/puku/pic/2017-06-26/8328.html", "params":"UserName=tester", "headers":{ "User-Agent":"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"} , "body":""}
+]
