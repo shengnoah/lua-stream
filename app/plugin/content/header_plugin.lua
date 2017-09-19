@@ -1,11 +1,11 @@
 local header_plugin = {}
 
 local src = {
-   args="pcre args"
+   args="header args"
 }
 
 local sink = {
-    name = "pcre_plugin",
+    name = "header_plugin",
     ver = "0.1"
 }
 

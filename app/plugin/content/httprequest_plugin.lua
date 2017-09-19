@@ -33,17 +33,22 @@ function html_plugin.action(self, stream)
         local http = require "resty.http"
         local httpc = http.new()
         local headers = {}
-
+         
         local res,err = httpc:request_uri(req.uri,{
                             method="GET",
                             body = req.body,
                             headers=req.headers
                         })
         if res then
-
+            --ngx.say(res.status)
             if res.status == ngx.HTTP_OK then
                 ngx.header['Content-Type'] = 'text/html; charset=UTF-8'
-                ngx.say(res.body)
+                local buffer = require "buffer"
+                buffer.sett(req.key, res.body)
+                --ngx.say(req.key)
+                --ngx.say(string.len(res.body))
+                --ngx.say(buffer.gett("luaren"))
+                ngx.say(type(res.body))
             else
                 ngx.exit(res.status)
             end
@@ -58,7 +63,8 @@ function html_plugin.action(self, stream)
         requestDeal { 
             uri=v.url, 
             body=v.body, 
-            headers=v.headers
+            headers=v.headers,
+            key=v.key
         }
     end
 end
