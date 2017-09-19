@@ -6,7 +6,8 @@ local status = pipeline:new {
     --require"plugin.content.sql_plugin",
     --require"plugin.content.cc_plugin",
     --require"plugin.content.pcre_plugin",
-    require"plugin.content.httprequest_plugin",
+    --require"plugin.content.httprequest_plugin",
+    require"plugin.content.waf_plugin",
 }
 --local ret = pipeline:run()
 return pipeline

@@ -1,0 +1,8 @@
+[
+{"Id":1,"RuleType":"t387","RuleItem":"/topic/387/", "Action":1, "uri":"/topic/387/"},
+{"Id":2,"RuleType":"t381","RuleItem":"/topic/381/", "Action":1, "uri":"/topic/381/"},
+{"Id":3,"RuleType":"t377","RuleItem":"/topic/377/", "Action":1, "uri":"/topic/377/"},
+{"Id":4,"RuleType":"t338","RuleItem":"/topic/338/", "Action":1, "uri":"/topic/338/"},
+{"Id":5,"RuleType":"t246","RuleItem":"/topic/246/", "Action":1, "uri":""},
+{"Id":6,"RuleType":"t155","RuleItem":"/topic/155/", "Action":1, "uri":""}
+]
