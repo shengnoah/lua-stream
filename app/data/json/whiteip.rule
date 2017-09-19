@@ -1,0 +1,5 @@
+[{"Id":1,"RuleType":"user1","RuleItem":"UserName=(.*%5C)?(?:user1)(%40.*|@.*|)&UserId=123456789", "Action":1},
+{"Id":2,"RuleType":"user2","RuleItem":"UserName=(.*%5C)?(?:user2)(%40.*|@.*|)&UserId=123456789", "Action":1},
+{"Id":3,"RuleType":"user3","RuleItem":"UserName=(.*%5C)?(?:user3)(%40.*|@.*|)&UserId=123456789", "Action":1}]
+
+

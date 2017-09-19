@@ -36,11 +36,18 @@ function httpsrc_plugin.action(self, stream)
        print(k,v)
     end
 
-    local params = require "nginx"
+    --local params = require "nginx"
+    --self.sink['request']['url'] = params['cmd_url']
+    --self.sink['request']['ip'] = params['ip'] 
+    local lazytable = require "nginx"
+    local params = lazytable:build_request("")
     self.sink['request']['url'] = params['cmd_url']
     self.sink['request']['ip'] = params['ip'] 
-    ngx.say(params['ip'])
---    self.sink['metadata'] = { data=self.source['data'].." httpsrc add ",uri="http://candylab.net" }
+    self.sink['request']['rip'] = params['rip'] 
+    self.sink['request']['cip'] = params['cip'] 
+
+    --ngx.say(params['ip'])
+    --self.sink['metadata'] = { data=self.source['data'].." httpsrc add ",uri="http://candylab.net" }
 end
 
 function  httpsrc_plugin.match(self, param)

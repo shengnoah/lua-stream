@@ -1,0 +1,8 @@
+[
+{"Id":1,"RuleType":"blockip","RuleItem":"101.226.66.172"},
+{"Id":2,"RuleType":"blockip","RuleItem":"116.231.8.230"},
+{"Id":3,"RuleType":"blockip","RuleItem":"218.30.113.35"},
+{"Id":4,"RuleType":"blockip","RuleItem":"223.202.116.5"},
+{"Id":5,"RuleType":"blockip","RuleItem":"220.181.108.119"},
+{"Id":6,"RuleType":"blockip","RuleItem":"106.75.117.183"}
+]

@@ -1,0 +1,10 @@
+[
+{"Id":1,"RuleType":"user1","RuleItem":"UserName=(.*%5C)?(?:user1)(%40.*|@.*|)&UserId=123456789", "Action":1, "uri":""},
+{"Id":2,"RuleType":"t387","RuleItem":"/topic/387/", "Action":1, "uri":"/topic/387/"},
+{"Id":3,"RuleType":"candylab","RuleItem":"tester", "Action":1, "uri":""},
+{"Id":4,"RuleType":"candylab","RuleItem":"c1ategory", "Action":1, "uri":""},
+{"Id":5,"RuleType":"t381","RuleItem":"/topic/381/", "Action":1, "uri":"/topic/381/"},
+{"Id":7,"RuleType":"t377","RuleItem":"/topic/377/", "Action":1, "uri":"/topic/377/"}
+]
+
+
